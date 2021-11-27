@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="author" content="Rutvikraj Vala">
+    <title>Heart Disesase Predication System</title>
+
+    <link href="https://unpkg.com/tailwindcss/dist/tailwind.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        .body-bg {
+            background-image: linear-gradient(270deg, #005C97, #363795 75%);
+        }
+    </style>
+</head>
+
+<body class="body-bg pt-1 md:pt-4 pb-8 px-0 md:px-4" style="font-family:'Lato',sans-serif;">
+    <header class="text-gray-400 bg-white bg-opacity-25 rounded-md shadow-2xl">
+        <div class="container mx-auto flex flex-wrap p-3 flex-col items-center">
+            <a
+                class="flex order-first lg:order-none title-font font-medium items-center text-white lg:items-center lg:justify-center mb-4 md:mb-0">
+                <svg xmlns="http://www.w3.org/2000/svg" width="65.1" height="39.36" viewBox="0 0 651 393.26">
+                    <path
+                      d="M1142,563,944.59,756.67a14.11,14.11,0,0,1-19.6,0L727.6,563c-46.68-45.79-46.48-120.55,1.67-164.84a117.82,117.82,0,0,1,161.61,2.59l43.91,43.08,43.91-43.08a117.81,117.81,0,0,1,161.6-2.59C1188.46,442.47,1188.66,517.22,1142,563Z"
+                      transform="translate(-613 -367.37)" style="fill:#f33" />
+                    <polyline
+                      points="646 211.63 536.02 211.42 386.77 211.42 350.43 298.19 303.52 116.76 267.36 201.49 120.83 201.49 5 201.63"
+                      style="fill:none;stroke:#06f;stroke-linecap:round;stroke-linejoin:round;stroke-width:10px" />
+                  </svg>
+                <span class="ml-3 text-xl xl:block lg:hidden">Heartify</span>
+            </a>
+        </div>
+    </header>
+
+    <main class="bg-white bg-opacity-10 max-w-screen-lg mx-auto p-8 md:p-12 my-10 rounded-lg shadow-2xl">
+        <section>
+            <p class="font-bold text-white text-3xl">Welcome to Our Heart Disease Prediction System!!</p>
+            <p class="text-white pt-2">Enter the details in the below fields to Predict the risk of devloping heart Disease.</p>
+        </section>
+        <br>
+        <section>
+            <form class="flex flex-col" action="{{ url_for('result') }}" method="post">
+                <div class="mb-6 pt-3 rounded bg-gray-200">
+                    <label class="block text-gray-700 text-sm font-bold mb-2 ml-3" for="age">Enter your
+                        age</label>
+                    <input type="number" min="0" max="115" oninput="this.value = Math.abs(this.value)"
+                        class="bg-gray-200 rounded w-full text-gray-700 focus:outline-none border-b-4 border-blue-300 focus:border-blue-500 transition duration-500 px-3 pb-3"
+                        id="age" name="age" placeholder="Type in your current age in years Ex - 25">
+                </div>
+                <div class="mb-6 pt-3 rounded bg-gray-200">
+                    <label class="block text-gray-700 text-sm font-bold mb-2 ml-3" for="trestbps">Resting Blood
+                        Pressure</label>
+                    <input type="number" min="0" max="200" oninput="this.value = Math.abs(this.value)" id="trestbps" name="trestbps" placeholder="Your Blood Pressure Ex - 156"
+                        class="bg-gray-200 rounded w-full text-gray-700 focus:outline-none border-b-4 border-blue-300 focus:border-blue-500 transition duration-500 px-3 pb-3">
+                </div>
+                <div class="mb-6 pt-3 rounded bg-gray-200">
+                    <label class="block text-gray-700 text-sm font-bold mb-2 ml-3" for="sex">Select Your
+                        Gender</label>
+                    <select
+                        class="bg-gray-200 rounded w-full text-gray-700 focus:outline-none border-b-4 border-blue-300 focus:border-blue-500 transition duration-500 px-3 pb-3"
+                        id="sex" name="sex">
+                        <option value="1">Male</option>
+                        <option value="0">Female</option>
+                    </select>
+                </div>
+                <div class="mb-6 pt-3 rounded bg-gray-200">
+                    <label class="block text-gray-700 text-sm font-bold mb-2 ml-3" for="chol">Level of Serum
+                        Cholestrol (in
+                        mg/dl)</label>
+                    <input type="number" min="0" max="500" oninput="this.value = Math.abs(this.value)"
+                        class="bg-gray-200 rounded w-full text-gray-700 focus:outline-none border-b-4 border-blue-300 focus:border-blue-500 transition duration-500 px-3 pb-3"
+                        id="chol" name="chol" placeholder="Your Cholestrol level Ex - 220">
+                </div>
+                <div class="mb-6 pt-3 rounded bg-gray-200">
+                    <label class="block text-gray-700 text-sm font-bold mb-2 ml-3" for="fbs">Level of Fasting
+                        blood
+                        sugar >120mg/dl?</label>
+                    <select
+                        class="bg-gray-200 rounded w-full text-gray-700 focus:outline-none border-b-4 border-blue-300 focus:border-blue-500 transition duration-500 px-3 pb-3"
+                        id="fbs" name="fbs">
+                        <option value="1">Yes</option>
+                        <option value="0">No</option>
+                    </select>
+                </div>
+                <div class="mb-6 pt-3 rounded bg-gray-200">
+                    <label class="block text-gray-700 text-sm font-bold mb-2 ml-3" for="restecg">Select Rest ECG
+                        Results</label>
+                    <select
+                        class="bg-gray-200 rounded w-full text-gray-700 focus:outline-none border-b-4 border-blue-300 focus:border-blue-500 transition duration-500 px-3 pb-3"
+                        id="restecg" name="restecg">
+                        <option value="0">Normal</option>
+                        <option value="1">Having ST-T wave abnormality (T wave inversions and/or ST elevation or
+                            depression of > 0.05 mV) </option>
+                        <option value="2">Showing probable or definite left ventricular hypertrophy by Estes'
+                            criteria</option>
+                    </select>
+                </div>
+                <div class="mb-6 pt-3 rounded bg-gray-200">
+                    <label class="block text-gray-700 text-sm font-bold mb-2 ml-3" for="thalach">Maximum heart
+                        rate
+                        achieved during ECG (in
+                        mg/dl)</label>
+                    <input type="number" min="0" max="500" oninput="this.value = Math.abs(this.value)"
+                        class="bg-gray-200 rounded w-full text-gray-700 focus:outline-none border-b-4 border-blue-300 focus:border-blue-500 transition duration-500 px-3 pb-3"
+                        id="thalach" name="thalach" placeholder="Max heart rate achived Ex - 125">
+                </div>
+                <div class="mb-6 pt-3 rounded bg-gray-200">
+                    <label class="block text-gray-700 text-sm font-bold mb-2 ml-3" for="exang">Chest pain during
+                        exercise?</label>
+                    <select
+                        class="bg-gray-200 rounded w-full text-gray-700 focus:outline-none border-b-4 border-blue-300 focus:border-blue-500 transition duration-500 px-3 pb-3"
+                        id="exang" name="exang">
+                        <option value="1">Yes</option>
+                        <option value="0">No</option>
+                    </select>
+                </div>
+                <div class="mb-6 pt-3 rounded bg-gray-200">
+                    <label class="block text-gray-700 text-sm font-bold mb-2 ml-3" for="cp">If there is Chest
+                        pain
+                        please select one of the type?</label>
+                    <select
+                        class="bg-gray-200 rounded w-full text-gray-700 focus:outline-none border-b-4 border-blue-300 focus:border-blue-500 transition duration-500 px-3 pb-3"
+                        id="cp" name="cp">
+                        <option value="0">No chest pain</option>
+                        <option value="1">Typical angina(Chest pain due to emotional or physical stress</option>
+                        <option value="2">Atypical angina(Discomfort in chest, no severe</option>
+                        <option value="3">Non-anginal chest pain(Near sternum, oppressive or pressure
+                            like(Discomfort in chest, no severe</option>
+                        <option value="4">Asymptomatic chest pain(Select if the above are not applicable)
+                        </option>
+                    </select>
+                </div>
+                <div>
+                    <center>
+                        <button type="submit" value="submit"
+                            class="p-2 pl-5 pr-5 bg-blue-600 text-white text-lg rounded-lg hover:bg-blue-800 hover:shadow-xl transition duration-200">Submit</button>
+                    </center>
+                </div>
+            </form>
+        </section>
+    </main>
+    <footer class="max-w-lg mx-auto flex justify-center text-white">
+        <a href="/contact" class="hover:underline" >Contact US</a>
+        <span class="mx-3">•</span>
+        <a href="/about" class="hover:underline">About the Project</a>
+    </footer>
+</body>
+
+</html>
