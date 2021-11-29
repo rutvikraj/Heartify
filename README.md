@@ -8,4 +8,4 @@ ML based Heart Disease Prediction System.
 - Install requirements  
    `pip install -r requirements.txt`
 - Run flask web app  
-    `python main_file.py`
+    `python app.py`
