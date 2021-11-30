@@ -9,3 +9,7 @@ ML based Heart Disease Prediction System to predict whether the patient is likel
    `pip install -r requirements.txt`
 - Run flask web app  
     `python app.py`
+
+## Models used and accuracy
+- Model -> Random Forest.
+- Accuracy -> 84.7%.
