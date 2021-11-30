@@ -1,5 +1,5 @@
 # Heartify
-ML based Heart Disease Prediction System.
+ML based Heart Disease Prediction System to predict whether the patient is likely to be diagnosed with a heart disease or not using the medical history of the patient.
 
 ## Running the web app
 #### Web App.
